@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo5">
+    tools:context=".MainFragment">
+
+
+   <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvBeers"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="120dp"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:gravity="center"
+        android:fontFamily="monospace"
+        android:text="BEERS OF THE WORLD"
+        android:textAlignment="center"
+        android:textColor="#431D0B"
+        android:textFontWeight="@integer/material_motion_duration_long_2"
+        android:textSize="30sp" />
+
+</FrameLayout>
