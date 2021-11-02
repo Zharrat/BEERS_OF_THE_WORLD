@@ -1,37 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="170dp"
-    android:layout_margin="20dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="10dp"
+    android:layout_margin="8dp"
+    android:background="@drawable/fondo4"
+    android:gravity="center"
     android:orientation="horizontal">
 
-
-
-        <ImageView
-            android:id="@+id/ivbeer"
-            android:layout_width="145dp"
-            android:layout_height="144dp"
-            android:layout_margin="10dp" />
-    <LinearLayout
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="20dp"
-        android:orientation="vertical">
+        android:scaleType="centerCrop"
+        android:src="@drawable/fondo5"></ImageView>
+
+    <ImageView
+        android:id="@+id/ivbeer"
+        android:layout_width="150dp"
+        android:layout_height="130dp"
+        android:layout_margin="20dp" />
+
+    <LinearLayout
+        android:layout_width="150dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:orientation="vertical"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginRight="50dp">
 
         <TextView
             android:id="@+id/tvid"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textSize="21sp"
+            android:textStyle="bold"
+            tools:text="1" />
 
         <TextView
             android:id="@+id/tvname"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            tools:text="Heineken" />
 
         <TextView
             android:id="@+id/tvtagline"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:textStyle="italic"
+            android:layout_gravity="center_horizontal"
+            tools:text="Good beer" />
+
     </LinearLayout>
-</LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
