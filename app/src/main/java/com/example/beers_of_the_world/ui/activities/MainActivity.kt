@@ -1,4 +1,4 @@
-package com.example.beers_of_the_world
+package com.example.beers_of_the_world.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

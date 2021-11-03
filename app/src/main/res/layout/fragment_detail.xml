@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/fondo5"
     android:visibility="visible"
-    tools:context=".DetailFragment">
+    tools:context=".ui.fragments.DetailFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

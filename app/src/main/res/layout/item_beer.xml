@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="170dp"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="10dp"
+    app:cardCornerRadius="25dp"
+    app:cardElevation="1dp"
     android:layout_margin="8dp"
     android:background="@drawable/fondo4"
     android:gravity="center"
@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/fondo5"></ImageView>
+        android:src="@drawable/fondo4"></ImageView>
 
     <ImageView
         android:id="@+id/ivbeer"

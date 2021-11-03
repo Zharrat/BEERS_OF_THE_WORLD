@@ -1,9 +1,16 @@
-package com.example.beers_of_the_world
+/*
+ * Copyright (c) FS
+ */
+
+package com.example.beers_of_the_world.viewModel
 
 import android.provider.MediaStore
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.beers_of_the_world.BeerResponse
+import com.example.beers_of_the_world.Event
+import com.example.beers_of_the_world.Resource
 import com.example.beers_of_the_world.repositories.BaseRepository
 
 

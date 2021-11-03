@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".ui.activities.MainActivity"
     android:orientation="horizontal">
 
     <fragment
@@ -16,4 +16,4 @@
 </LinearLayout>
 
 
-    <!--android:name="com.example.beers_of_the_world.MainFragment"-->
+    <!--android:name="com.example.beers_of_the_world.ui.fragments.MainFragment"-->

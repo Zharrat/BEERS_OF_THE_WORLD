@@ -5,14 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.fragment.app.viewModels
-import androidx.navigation.NavDirections
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.beers_of_the_world.*
 import com.example.beers_of_the_world.databinding.FragmentMainBinding
 import com.example.beers_of_the_world.databinding.ItemBeerBinding
+import com.example.beers_of_the_world.ui.fragments.MainFragment
 import com.squareup.picasso.Picasso
 
 class BeerAdapter(private val listener: MainFragment, val abeer: List<BeerResponse>) :

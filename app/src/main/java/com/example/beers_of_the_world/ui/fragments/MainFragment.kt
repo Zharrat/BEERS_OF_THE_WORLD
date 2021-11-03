@@ -1,4 +1,8 @@
-package com.example.beers_of_the_world
+/*
+ * Copyright (c) FS
+ */
+
+package com.example.beers_of_the_world.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,6 +18,8 @@ import androidx.navigation.NavController
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.beers_of_the_world.BeerResponse
+import com.example.beers_of_the_world.viewModel.MainViewModel
 import com.example.beers_of_the_world.databinding.FragmentMainBinding
 import com.example.beers_of_the_world.ui.adapter.BeerAdapter
 import com.google.android.material.dialog.MaterialAlertDialogBuilder

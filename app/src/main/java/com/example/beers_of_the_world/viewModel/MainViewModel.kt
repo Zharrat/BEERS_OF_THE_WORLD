@@ -1,9 +1,17 @@
-package com.example.beers_of_the_world
+/*
+ * Copyright (c) FS
+ */
+
+package com.example.beers_of_the_world.viewModel
 
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.beers_of_the_world.APIService
+import com.example.beers_of_the_world.BeerResponse
+import com.example.beers_of_the_world.Event
+import com.example.beers_of_the_world.Resource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

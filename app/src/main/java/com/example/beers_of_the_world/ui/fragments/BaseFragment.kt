@@ -1,8 +1,13 @@
-package com.example.beers_of_the_world
+/*
+ * Copyright (c) FS
+ */
+
+package com.example.beers_of_the_world.ui.fragments
 
 import android.net.ConnectivityManager
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
+import com.example.beers_of_the_world.viewModel.BaseViewModel
 
 abstract class BaseFragment <VM : BaseViewModel,B : ViewBinding> : Fragment() {
 

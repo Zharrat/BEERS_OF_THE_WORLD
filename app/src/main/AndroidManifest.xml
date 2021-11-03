@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.beers_of_the_world">
         <activity
-            android:name="com.example.beers_of_the_world.MainActivity"
+            android:name="com.example.beers_of_the_world.ui.activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
