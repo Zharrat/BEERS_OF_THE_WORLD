@@ -12,6 +12,8 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.beers_of_the_world.databinding.FragmentRegisterBinding
 import com.example.beers_of_the_world.viewModel.LoginViewModel
+import com.example.beers_of_the_world.viewModel.MainViewModel
+import com.example.beers_of_the_world.viewModel.RegisterViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 
@@ -48,6 +50,45 @@ class RegisterFragment : Fragment() {
 
     private fun buildListeners() {
         onFragmentBackPressed(closeSession = true)
+        binding.btregister.setOnClickListener {
+            registerQuestion()
+            //comeBackFirstFragment()
+        }
+    }
+
+    private fun registerQuestion() {
+        okQuestion(
+            "REGISTER",
+            "NEW USER",
+            {
+
+            })
+    }
+
+
+
+    fun okQuestion(
+        title: String,
+        message: String,
+        yesFunc: () -> Unit,
+        noFunc: (() -> Unit)? = null,
+        yesMessage: String? = "YES",
+        noMessage: String? = "NO"
+    ) {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("WELCOME")
+            .setMessage("¿DO YOU WANT TO BE REGISTERED?")
+            .setPositiveButton("YES") { dialog, _ ->
+                yesFunc()
+                dialog.dismiss()
+                //appFinish()
+                comeBackFirstFragment()
+            }
+            .setNegativeButton("NO") { dialog, _ ->
+                noFunc?.let { noFunc() }
+                dialog.dismiss()
+            }
+            .show()
     }
 
 
@@ -74,7 +115,7 @@ class RegisterFragment : Fragment() {
     }
 
     //We launch the question.
-    fun question() {
+    private fun question() {
         finalQuestion(
             "EXIT",
             "¿COME BACK?",

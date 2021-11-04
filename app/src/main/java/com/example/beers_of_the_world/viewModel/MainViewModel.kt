@@ -109,7 +109,7 @@ class MainViewModel : ViewModel() {
 
     }
 
-    //Coroutine to execute in the background.
+    //Coroutine to get the beers in the background.
     private fun getRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl("https://api.punkapi.com/v2/beers/")
