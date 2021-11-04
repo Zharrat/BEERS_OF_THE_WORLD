@@ -16,7 +16,7 @@ import com.example.beers_of_the_world.ui.activities.MainActivity
 import com.example.beers_of_the_world.viewModel.LoginViewModel
 
 
-class loginFragment : Fragment() {
+class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
     private lateinit var navController: NavController
@@ -40,12 +40,12 @@ class loginFragment : Fragment() {
 
         /*subscribeUI()*/
 
-        buildListeners()
+        //buildListeners()
 
 
     }
 
-    private fun buildListeners() {
+   /* private fun buildListeners() {
         buttonPassListener()
     }
 
@@ -57,7 +57,7 @@ class loginFragment : Fragment() {
         binding.buttonpass.setOnClickListener {
             startActivity(Intent(requireContext(), MainActivity::class.java))
         }
-    }
+    }*/
 
     /*private fun bLoginListener() {
         binding.buttonpass.setOnClickListener {

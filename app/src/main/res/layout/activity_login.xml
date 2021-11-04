@@ -9,7 +9,7 @@
     android:orientation="horizontal">
 
     <fragment
-        android:id="@+id/fragment"
+        android:id="@+id/fragment2"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"

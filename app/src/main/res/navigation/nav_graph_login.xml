@@ -9,20 +9,20 @@
     app:startDestination="@id/loginFragment">
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.beers_of_the_world.ui.fragments.loginFragment"
+        android:name="com.example.beers_of_the_world.ui.fragments.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_registerFragment2"
-            app:destination="@id/registerFragment2" />
+            app:destination="@id/registerFragment" />
     </fragment>
     <fragment
-        android:id="@+id/registerFragment2"
+        android:id="@+id/registerFragment"
         android:name="com.example.beers_of_the_world.ui.fragments.RegisterFragment"
         android:label="register_home_fragment"
         tools:layout="@layout/register_home_fragment" >
         <action
-            android:id="@+id/action_registerFragment2_to_loginFragment"
+            android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
 </navigation>

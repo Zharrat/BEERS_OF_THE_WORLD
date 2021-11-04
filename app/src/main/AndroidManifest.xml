@@ -9,7 +9,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="BEERS OF THE WORLD"
+        android:label="BEERS_OF_THE_WORLD"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.beers_of_the_world">
@@ -18,13 +18,14 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".ui.activities.MainActivity"
-            android:exported="false">
+            android:exported="true">
+
         </activity>
     </application>
 
