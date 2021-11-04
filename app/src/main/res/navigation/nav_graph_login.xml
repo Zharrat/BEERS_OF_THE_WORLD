@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright (c) FS
-  -->
+<?xml version="1.0" encoding="utf-8"?>
+
 
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -10,17 +9,14 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.beers_of_the_world.ui.fragments.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
-        <action
-            android:id="@+id/action_loginFragment_to_registerFragment2"
-            app:destination="@id/registerFragment" />
-    </fragment>
+        android:label="fragment_login"/>
+    <action
+        android:id="@+id/action_loginFragment_to_registerFragment"
+        app:destination="@id/registerFragment" />
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.beers_of_the_world.ui.fragments.RegisterFragment"
-        android:label="register_home_fragment"
-        tools:layout="@layout/fragment_register" >
+        android:label="fragment_register" >
         <action
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment" />

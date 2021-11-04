@@ -25,12 +25,14 @@ import com.example.beers_of_the_world.ui.adapter.BeerAdapter
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 
-class MainFragment : Fragment() ,BeerAdapter.OnItemClickListener{
+class MainFragment : Fragment(), BeerAdapter.OnItemClickListener {
 
+    //To call to elemets from the layout
     private lateinit var binding: FragmentMainBinding
+
+
     private lateinit var navController: NavController
     private lateinit var beerAdapter: BeerAdapter
-
 
 
     //To can access to the methods of the class
@@ -40,7 +42,7 @@ class MainFragment : Fragment() ,BeerAdapter.OnItemClickListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //We show the list of beers in the first fragment.
-        /*MainViewModel.getListOfBeers()*/
+        //We obtain the beers from the api.
         MainViewModel.getBeers()
 
 
@@ -51,37 +53,28 @@ class MainFragment : Fragment() ,BeerAdapter.OnItemClickListener{
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMainBinding.inflate(inflater, container, false)
-        // Inflates the layout for this fragment
         return binding.root
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //We subscribe to the data changes.
 
+        //We subscribe to the data changes.
         subscribeUI()
+
+        //We create the listeners.
         buildListeners()
 
     }
 
-    /*   private fun initRecycler(abeers: List<BeerResponse>) {
-           buildAdapter(abeers)
-           *//*binding.rvBeers.layoutManager = LinearLayoutManager(binding.rvBeers.context)
-
-        val adapter= BeerAdapter(abeers)
-        binding.rvBeers.adapter=adapter*//*
-
-    }*/
-
     private fun initRecycler(abeers: List<BeerResponse>) {
         buildAdapter(abeers)
-
 
     }
 
     private fun buildAdapter(abeers: List<BeerResponse>) {
-        beerAdapter = BeerAdapter(this,abeers)
+        beerAdapter = BeerAdapter(this, abeers)
 
         binding.rvBeers.apply {
             layoutManager =
@@ -90,6 +83,7 @@ class MainFragment : Fragment() ,BeerAdapter.OnItemClickListener{
         }
     }
 
+    //The action when the user clicks in the one item.
     override fun onItemClick(position: Int) {
         //Toast.makeText(getActivity(), "Ha pulsado $position", Toast.LENGTH_LONG).show();
         MainViewModel.getBeerByPos(position)
@@ -97,20 +91,20 @@ class MainFragment : Fragment() ,BeerAdapter.OnItemClickListener{
     }
 
 
-
-
-    //Listeners
-    private fun buildListeners() {
-
+    //The listeners
+    private fun buildListeners() { //We touch the back button.
         onFragmentBackPressed(closeSession = true)
     }
 
     //We subscribe to the data changes.
     private fun subscribeUI() {
-        //observeItems()
+
+        //We observe the changes in the recycler view of the beers.
         observeRVBeer()
+        //We observe the changes in the selected beer.
         observeSelectedBeer()
     }
+
 
     private fun getABeer(position: Int) {
         MainViewModel.getBeerByPos(position)
@@ -124,7 +118,7 @@ class MainFragment : Fragment() ,BeerAdapter.OnItemClickListener{
 
     }
 
-
+    //Observers
     private fun observeRVBeer() {
         MainViewModel.beersList.observe(viewLifecycleOwner, Observer {
             it?.let {
@@ -142,24 +136,6 @@ class MainFragment : Fragment() ,BeerAdapter.OnItemClickListener{
         })
     }
 
-
-    //Observe the changes.
-   /* private fun observeItems() {
-        MainViewModel.beerSelected.observe(viewLifecycleOwner, Observer {
-            it?.let {
-                manageFragmentsDirections(it)
-            }
-        })
-    }*/
-
-    //Function to display the array of names in the listview.
-    /*   private fun displayNames(aNames: List<String>) {
-           listAdapter =
-               activity?.let {
-                   ArrayAdapter<String>(it, R.layout.simple_list_item_1, aNames)
-               }
-
-       }*/
 
     //Function when we press the back button.
     fun onFragmentBackPressed(

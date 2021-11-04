@@ -1,4 +1,3 @@
-
 package com.example.beers_of_the_world.ui.fragments
 
 import android.content.Intent
@@ -9,12 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
-import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import com.example.beers_of_the_world.R
 import com.example.beers_of_the_world.databinding.FragmentLoginBinding
-import com.example.beers_of_the_world.databinding.FragmentMainBinding
 import com.example.beers_of_the_world.ui.activities.MainActivity
 import com.example.beers_of_the_world.viewModel.LoginViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -25,6 +23,7 @@ class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
     private lateinit var navController: NavController
     private lateinit var loginViewModel: LoginViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,7 +41,6 @@ class LoginFragment : Fragment() {
     }
 
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -53,23 +51,51 @@ class LoginFragment : Fragment() {
 
     }
 
+
+    //We create the listeners.
     private fun buildListeners() {
         onFragmentBackPressed(closeSession = true)
-        buttonPassToRegister()
+        //buttonPassToRegister()
         buttonPassToLogin()
         buttonPassWithoutLogin()
+        binding.ibregister.setOnClickListener {
+            manageFragmentsDirections()
+        }
+
+
+
+    }
+    /*   private fun observeButtonToRegister() {
+           MainViewModel.beerSelected.observe(viewLifecycleOwner, Observer {
+               it?.let {
+                   manageFragmentsDirections(it)
+               }
+           })
+       }*/
+
+    /*   private fun buttonPassToRegister() {
+           binding.ivregister.setOnClickListener() {
+               it?.let {
+                   manageFragmentsDirections(it)
+               }
+           }
+       }*/
+
+    private fun manageFragmentsDirections() {
+        findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
     }
 
-    private fun buttonPassToRegister() {
-        binding.ivregister.setOnClickListener() {
-            Toast.makeText(getActivity(), "LAUNCH REGISTER FRAGMENT", Toast.LENGTH_LONG).show();
-            //We create an object of an user.
-        }
-    }
+    /*fun manageFragmentsDirections(user: User) {
+
+       val action: NavDirections = MainFragmentDirections.actionGlobalDetailFragment(user)
+       findNavController().navigate(action)
+
+   }*/
 
     private fun buttonPassToLogin() {
         binding.iblogin.setOnClickListener() {
             Toast.makeText(getActivity(), "LAUNCH LOGIN FRAGMENT", Toast.LENGTH_LONG).show();
+            //We compare the data of the user.
 
 
         }
@@ -78,7 +104,10 @@ class LoginFragment : Fragment() {
     private fun buttonPassWithoutLogin() {
         binding.btenter.setOnClickListener() {
             //Toast.makeText(getActivity(), "LAUNCH LOGIN ACTIVITY", Toast.LENGTH_LONG).show();
+
+            //Starts the second activity.
             startActivity(Intent(requireContext(), MainActivity::class.java))
+            //finish the current activity.
             appFinish()
 
         }
