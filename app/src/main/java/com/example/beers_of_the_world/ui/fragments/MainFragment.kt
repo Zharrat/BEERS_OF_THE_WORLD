@@ -128,7 +128,7 @@ class MainFragment : Fragment() ,BeerAdapter.OnItemClickListener{
     private fun observeRVBeer() {
         MainViewModel.beersList.observe(viewLifecycleOwner, Observer {
             it?.let {
-                Toast.makeText(getActivity(), "Datos actualizados", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "UPDATED DATA", Toast.LENGTH_LONG).show();
                 initRecycler(it)
             }
         })
@@ -186,8 +186,8 @@ class MainFragment : Fragment() ,BeerAdapter.OnItemClickListener{
     //We launch the question.
     fun question() {
         finalQuestion(
-            "SALIR",
-            "¿Seguro que quieres salir?",
+            "EXIT",
+            "¿ARE YOU SURE?",
             {
                 appFinish()
             })
@@ -199,13 +199,13 @@ class MainFragment : Fragment() ,BeerAdapter.OnItemClickListener{
         message: String,
         yesFunc: () -> Unit,
         noFunc: (() -> Unit)? = null,
-        yesMessage: String? = "SI",
+        yesMessage: String? = "YES",
         noMessage: String? = "NO"
     ) {
         MaterialAlertDialogBuilder(requireContext())
             .setTitle("BEERS OF THE WORLD")
-            .setMessage("¿QUIERE SALIR DE LA APLICACIÓN?")
-            .setPositiveButton("SI ,SALIR") { dialog, _ ->
+            .setMessage("¿EXIT?")
+            .setPositiveButton("YES") { dialog, _ ->
                 yesFunc()
                 dialog.dismiss()
                 appFinish()

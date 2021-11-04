@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.beers_of_the_world.*
+import com.example.beers_of_the_world.BeerResponse
 import com.example.beers_of_the_world.databinding.FragmentMainBinding
 import com.example.beers_of_the_world.databinding.ItemBeerBinding
 import com.example.beers_of_the_world.ui.fragments.MainFragment

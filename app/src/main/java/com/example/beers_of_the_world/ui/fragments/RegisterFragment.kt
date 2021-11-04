@@ -7,10 +7,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.beers_of_the_world.R
+import androidx.navigation.NavController
+import com.example.beers_of_the_world.databinding.FragmentRegisterBinding
+import com.example.beers_of_the_world.viewModel.LoginViewModel
 
 
 class RegisterFragment : Fragment() {
+
+    private lateinit var binding : FragmentRegisterBinding
+    private lateinit var navController: NavController
+    private lateinit var loginViewModel: LoginViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,8 +28,9 @@ class RegisterFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.register_home_fragment, container, false)
+        binding = FragmentRegisterBinding.inflate(inflater, container, false)
+        // Inflates the layout for this fragment
+        return binding.root
     }
 
     companion object {
