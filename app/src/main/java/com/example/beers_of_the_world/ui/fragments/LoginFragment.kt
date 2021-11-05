@@ -2,20 +2,26 @@ package com.example.beers_of_the_world.ui.fragments
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.activity.OnBackPressedCallback
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
-import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
-import com.example.beers_of_the_world.R
+import com.example.beers_of_the_world.database.RegisterDatabase
+import com.example.beers_of_the_world.database.RegisterRepository
 import com.example.beers_of_the_world.databinding.FragmentLoginBinding
 import com.example.beers_of_the_world.ui.activities.MainActivity
 import com.example.beers_of_the_world.viewModel.LoginViewModel
+import com.example.beers_of_the_world.viewModel.LoginViewModelFactory
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+
 
 
 class LoginFragment : Fragment() {
@@ -34,11 +40,69 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         // Inflates the layout for this fragment
-        return binding.root
+        val application = requireNotNull(this.activity).application
 
+        val dao = RegisterDatabase.getInstance(application).registerDatabaseDao
+
+        val repository = RegisterRepository(dao)
+
+        val factory = LoginViewModelFactory(repository, application)
+
+        loginViewModel = ViewModelProvider(this, factory).get(LoginViewModel::class.java)
+
+
+
+       //binding.myLoginViewModel= loginViewModel
+
+
+
+        loginViewModel.navigatetoRegister.observe(viewLifecycleOwner, Observer { hasFinished->
+            if (hasFinished == true){
+                Log.i("MYTAG","insidi observe")
+                //displayUsersList()
+                loginViewModel.doneNavigatingRegiter()
+            }
+        })
+
+        loginViewModel.errotoast.observe(viewLifecycleOwner, Observer { hasError->
+            if(hasError==true){
+                Toast.makeText(requireContext(), "Please fill all fields", Toast.LENGTH_SHORT).show()
+                loginViewModel.donetoast()
+            }
+        })
+
+        loginViewModel.errotoastUsername .observe(viewLifecycleOwner, Observer { hasError->
+            if(hasError==true){
+                Toast.makeText(requireContext(), "User doesnt exist,please Register!", Toast.LENGTH_SHORT).show()
+                loginViewModel.donetoastErrorUsername()
+            }
+        })
+
+        loginViewModel.errorToastInvalidPassword.observe(viewLifecycleOwner, Observer { hasError->
+            if(hasError==true){
+                Toast.makeText(requireContext(), "Please check your Password", Toast.LENGTH_SHORT).show()
+                loginViewModel.donetoastInvalidPassword()
+            }
+        })
+
+        loginViewModel.navigatetoUserDetails.observe(viewLifecycleOwner, Observer { hasFinished->
+            if (hasFinished == true){
+                //Log.i("MYTAG","insidi observe")
+                //navigateUserDetails()
+                loggedOK()
+                loginViewModel.doneNavigatingUserDetails()
+            }
+        })
+
+        buildListeners()
+        return binding.root
     }
+
+
+
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -46,7 +110,7 @@ class LoginFragment : Fragment() {
 
         /*subscribeUI()*/
 
-        buildListeners()
+        //buildListeners()
 
 
     }
@@ -93,8 +157,9 @@ class LoginFragment : Fragment() {
    }*/
 
     private fun buttonPassToLogin() {
-        binding.iblogin.setOnClickListener() {
-            Toast.makeText(getActivity(), "LAUNCH LOGIN FRAGMENT", Toast.LENGTH_LONG).show();
+        binding.submitButton.setOnClickListener() {
+            //Toast.makeText(getActivity(), "LAUNCH LOGIN FRAGMENT", Toast.LENGTH_LONG).show();
+            loginViewModel.loginButton()
             //We compare the data of the user.
 
 
@@ -112,6 +177,12 @@ class LoginFragment : Fragment() {
 
         }
 
+    }
+
+    private fun loggedOK () {
+        startActivity(Intent(requireContext(), MainActivity::class.java))
+        //finish the current activity.
+        appFinish()
     }
 
 
@@ -175,6 +246,7 @@ class LoginFragment : Fragment() {
     fun appFinish() {
         activity?.finish()
     }
+
 }
 
 

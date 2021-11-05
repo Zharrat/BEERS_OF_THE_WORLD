@@ -1,6 +1,10 @@
+/*
+ * Copyright (c) FS
+ */
 
 
-package com.example.beers_of_the_world
+
+package com.example.beers_of_the_world.database.objects
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

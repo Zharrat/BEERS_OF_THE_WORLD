@@ -2,7 +2,7 @@
  * Copyright (c) FS
  */
 
-package com.example.beers_of_the_world.data.responses
+package com.example.beers_of_the_world.database.responses
 
 data class ApiResponse(
     val code: Int,

@@ -6,7 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo5"
-    tools:context=".LoginFragment">
+    tools:context=".LoginFragment"
+    android:id="@+id/myLoginViewModel"
+    type="com.example.beers_of_the_world.viewModel.LoginViewModel"
+    tools:ignore="MissingPrefix">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -61,7 +64,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/etusername"
+            android:id="@+id/userNameTextField"
             android:layout_width="164dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="44dp"
@@ -81,7 +84,7 @@
 
 
         <EditText
-            android:id="@+id/etpassword"
+            android:id="@+id/passwordTextField"
             android:layout_width="164dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="44dp"
@@ -116,7 +119,7 @@
 
 
         <ImageButton
-            android:id="@+id/iblogin"
+            android:id="@+id/submitButton"
             android:layout_width="218dp"
             android:layout_height="64dp"
             android:layout_gravity="center"
