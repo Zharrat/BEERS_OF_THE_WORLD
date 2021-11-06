@@ -11,7 +11,6 @@ import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.beers_of_the_world.database.RegisterDatabase
@@ -23,10 +22,6 @@ import com.example.beers_of_the_world.viewModel.MainViewModel
 import com.example.beers_of_the_world.viewModel.RegisterViewModel
 import com.example.beers_of_the_world.viewModel.RegisterViewModelFactory
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 
 class RegisterFragment : Fragment() {
@@ -58,9 +53,6 @@ class RegisterFragment : Fragment() {
 
         registerViewModel = ViewModelProvider(this, factory).get(RegisterViewModel::class.java)
 
-        //binding.myViewModel = registerViewModel
-
-        //binding.lifecycleOwner = this
 
         registerViewModel.navigateto.observe(viewLifecycleOwner, Observer { hasFinished ->
             if (hasFinished == true) {
@@ -106,15 +98,14 @@ class RegisterFragment : Fragment() {
     fun sendUser() {
 
         var firstName = binding.firstNameTextField.text.toString()
-
         var lastName = binding.secondNameTextField.text.toString()
         var userName = binding.userNameTextField.text.toString()
         var password = binding.passwordTextField.text.toString()
 
 
         val registerEntity = RegisterEntity(0, firstName, lastName, userName, password)
-        Toast.makeText(getActivity(), ""+firstName, Toast.LENGTH_LONG).show();
-            registerViewModel.sumbitButton(registerEntity)
+        //Toast.makeText(getActivity(), "" + firstName, Toast.LENGTH_LONG).show();
+        registerViewModel.sumbitButton(registerEntity)
 
     }
 
@@ -122,13 +113,11 @@ class RegisterFragment : Fragment() {
     private fun buildListeners() {
         onFragmentBackPressed(closeSession = true)
         binding.submitButton.setOnClickListener {
-           sendUser()
+            //sendUser()
 
+            //comeBackFirstFragment()
 
-
-            comeBackFirstFragment()
-
-            //registerQuestion()
+            registerQuestion()
             //comeBackFirstFragment()
         }
     }
@@ -141,29 +130,6 @@ class RegisterFragment : Fragment() {
 
             })
     }
-
-/*
-    public fun getBeers() {
-        CoroutineScope(Dispatchers.IO).launch {
-            val response = getRetrofit().create(APIService::class.java).getBeer("").execute()
-            val beert = response.body()
-            beert?.let {
-                initAdapter1(it)
-                //var beeres = beers[id]
-            }
-
-        }
-    }
-
-    //Coroutine to get the beers in the background.
-    private fun getRetrofit(): Retrofit {
-        return Retrofit.Builder()
-            .baseUrl("https://api.punkapi.com/v2/beers/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }
-*/
-
 
     fun okQuestion(
         title: String,
@@ -181,7 +147,7 @@ class RegisterFragment : Fragment() {
                 dialog.dismiss()
                 //appFinish()
                 sendUser()
-                    comeBackFirstFragment()
+                comeBackFirstFragment()
 
             }
             .setNegativeButton("NO") { dialog, _ ->
@@ -239,7 +205,7 @@ class RegisterFragment : Fragment() {
     ) {
         MaterialAlertDialogBuilder(requireContext())
             .setTitle("BEERS OF THE WORLD")
-            .setMessage("¿COME BACK TO LOGIN?")
+            .setMessage("NOT REGISTERED.¿COME BACK TO LOGIN?")
             .setPositiveButton("YES") { dialog, _ ->
                 yesFunc()
                 dialog.dismiss()

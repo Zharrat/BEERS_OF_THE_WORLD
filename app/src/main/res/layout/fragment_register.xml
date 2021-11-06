@@ -24,7 +24,7 @@
             android:layout_marginBottom="411dp"
             android:text="@string/UserNameTextView"
             android:textAlignment="viewStart"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -34,7 +34,6 @@
 
         <EditText
             android:id="@+id/passwordTextField"
-            android:focusableInTouchMode="false"
             android:layout_width="247dp"
             android:layout_height="38dp"
             android:layout_marginStart="56dp"
@@ -42,6 +41,7 @@
             android:layout_marginEnd="108dp"
             android:layout_marginBottom="244dp"
             android:ems="10"
+            android:textSize="14sp"
             android:hint="Password"
             android:inputType="textPersonName"
             android:text=""
@@ -62,7 +62,7 @@
             android:layout_marginBottom="290dp"
             android:text="Password:"
             android:textAlignment="viewStart"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -72,7 +72,6 @@
 
         <EditText
             android:id="@+id/secondNameTextField"
-            android:focusableInTouchMode="false"
             android:layout_width="164dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="57dp"
@@ -101,7 +100,7 @@
             android:layout_marginBottom="638dp"
             android:text="First Name:"
             android:textAlignment="viewStart"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -111,7 +110,6 @@
 
         <EditText
             android:id="@+id/userNameTextField"
-            android:focusableInTouchMode="false"
             android:layout_width="164dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="57dp"
@@ -140,7 +138,7 @@
             android:layout_marginBottom="516dp"
             android:text="Last Name"
             android:textAlignment="viewStart"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -150,7 +148,6 @@
 
         <EditText
             android:id="@+id/first_name_text_field"
-            android:focusableInTouchMode="false"
             android:layout_width="164dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="57dp"

@@ -19,12 +19,32 @@
             android:id="@+id/tvtitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="82dp"
-            android:layout_marginBottom="81dp"
-            android:text="LOGIN"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="65dp"
+            android:layout_marginEnd="14dp"
+            android:layout_marginBottom="621dp"
+            android:text="BEERS OF THE WORLD"
+            android:textAlignment="center"
             android:textSize="34sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/tvusername"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.516"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/tvtitulo2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="128dp"
+            android:layout_marginBottom="558dp"
+            android:text="LOGIN"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -39,12 +59,14 @@
             android:layout_marginBottom="502dp"
             android:text="@string/UserNameTextView"
             android:textAlignment="viewStart"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.476"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/tvpassword"
@@ -56,21 +78,22 @@
             android:layout_marginBottom="376dp"
             android:text="@string/PasswordText"
             android:textAlignment="viewStart"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+
         <EditText
             android:id="@+id/userNameTextField"
             android:layout_width="164dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="44dp"
-            android:layout_marginTop="256dp"
-            android:layout_marginEnd="203dp"
-            android:layout_marginBottom="435dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="255dp"
+            android:layout_marginEnd="212dp"
+            android:layout_marginBottom="436dp"
             android:ems="10"
             android:hint="@string/UsernameTextField"
             android:importantForAutofill="no"
@@ -82,14 +105,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
         <EditText
             android:id="@+id/passwordTextField"
             android:layout_width="164dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="44dp"
+            android:layout_marginStart="35dp"
             android:layout_marginTop="369dp"
-            android:layout_marginEnd="203dp"
+            android:layout_marginEnd="212dp"
             android:layout_marginBottom="322dp"
             android:ems="10"
             android:hint="@string/PasswordTextFiels"
@@ -107,71 +129,26 @@
             android:layout_width="218dp"
             android:layout_height="64dp"
             android:layout_marginStart="97dp"
-            android:layout_marginTop="432dp"
-            android:layout_marginEnd="96dp"
-            android:layout_marginBottom="235dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
-
-
-        <ImageButton
-            android:id="@+id/submitButton"
-            android:layout_width="218dp"
-            android:layout_height="64dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="97dp"
-            android:layout_marginTop="432dp"
-            android:layout_marginEnd="96dp"
-            android:layout_marginBottom="235dp"
-            android:background="@drawable/fondo10"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="178dp"
             android:layout_marginTop="453dp"
-            android:layout_marginEnd="175dp"
-            android:layout_marginBottom="251dp"
-            android:text="LOGIN"
-            android:textColor="@color/white"
-            android:textSize="20dp"
+            android:layout_marginEnd="47dp"
+            android:layout_marginBottom="214dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout2"
-            android:layout_width="218dp"
-            android:layout_height="64dp"
-            android:layout_marginStart="101dp"
-            android:layout_marginTop="544dp"
-            android:layout_marginEnd="92dp"
-            android:layout_marginBottom="123dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintVertical_bias="0.0">
 
             <ImageButton
-                android:id="@+id/ibregister"
-                android:layout_width="218dp"
-                android:layout_height="64dp"
+                android:id="@+id/submitButton"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
                 android:layout_gravity="center"
+                android:layout_marginStart="34dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginEnd="34dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/fondo10"
-                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -180,13 +157,64 @@
                 tools:ignore="MissingConstraints" />
 
             <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="81dp"
+                android:layout_marginTop="21dp"
+                android:layout_marginEnd="79dp"
+                android:layout_marginBottom="16dp"
+                android:text="LOGIN"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="218dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="98dp"
+            android:layout_marginTop="544dp"
+            android:layout_marginEnd="95dp"
+            android:layout_marginBottom="123dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+
+            <ImageButton
+                android:id="@+id/ibregister"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="3dp"
+                android:background="@drawable/fondo10"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="41dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="19dp"
                 android:layout_marginEnd="41dp"
-                android:layout_marginBottom="11dp"
+                android:layout_marginBottom="14dp"
                 android:text="REGISTER"
                 android:textColor="@color/white"
                 android:textSize="20dp"
@@ -201,13 +229,15 @@
             android:id="@+id/btenter"
             android:layout_width="77dp"
             android:layout_height="41dp"
-            android:layout_marginStart="21dp"
-            android:layout_marginTop="86dp"
-            android:layout_marginBottom="604dp"
+            android:layout_marginStart="329dp"
+            android:layout_marginTop="684dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="6dp"
             android:backgroundTint="#733522"
             android:text="ENTER"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
