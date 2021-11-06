@@ -78,15 +78,12 @@ class RegisterViewModel(private val repository: RegisterRepository, application:
     }
 
     public fun sumbitButton(registerEntity: RegisterEntity) {
-
-
+        Log.i("MYTAG", "Inside SUBMIT BUTTON")
         inputFirstName.value= registerEntity.firstName
         inputLastName.value= registerEntity.lastName
         inputUsername.value= registerEntity.userName
         inputPassword.value= registerEntity.passwrd
 
-
-        Log.i("MYTAG", "Inside SUBMIT BUTTON")
         if (inputFirstName.value == null || inputLastName.value == null || inputUsername.value == null || inputPassword.value == null) {
             _errorToast.value = true
         } else {
@@ -117,6 +114,7 @@ class RegisterViewModel(private val repository: RegisterRepository, application:
     }
 
 
+
     override fun onCleared() {
         super.onCleared()
     }
@@ -140,9 +138,6 @@ class RegisterViewModel(private val repository: RegisterRepository, application:
         repository.insert(user)
     }
 
-//    fun clearALl():Job = viewModelScope.launch {
-//        repository.deleteAll()
-//    }
 
     override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
 

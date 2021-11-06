@@ -59,7 +59,10 @@ class LoginViewModel (private val repository: RegisterRepository, application: A
         _navigatetoRegister.value = true
     }
 
-    fun loginButton() {
+    fun loginButton(username: String, password: String) {
+
+        inputUsername.value= username
+        inputPassword.value= password
         if (inputUsername.value == null || inputPassword.value == null) {
             _errorToast.value = true
         } else {

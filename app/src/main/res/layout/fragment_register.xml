@@ -34,6 +34,7 @@
 
         <EditText
             android:id="@+id/passwordTextField"
+            android:focusableInTouchMode="false"
             android:layout_width="247dp"
             android:layout_height="38dp"
             android:layout_marginStart="56dp"
@@ -71,6 +72,7 @@
 
         <EditText
             android:id="@+id/secondNameTextField"
+            android:focusableInTouchMode="false"
             android:layout_width="164dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="57dp"
@@ -109,6 +111,7 @@
 
         <EditText
             android:id="@+id/userNameTextField"
+            android:focusableInTouchMode="false"
             android:layout_width="164dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="57dp"
@@ -147,6 +150,7 @@
 
         <EditText
             android:id="@+id/first_name_text_field"
+            android:focusableInTouchMode="false"
             android:layout_width="164dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="57dp"

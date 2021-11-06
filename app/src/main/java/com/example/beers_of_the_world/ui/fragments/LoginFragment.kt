@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.beers_of_the_world.database.RegisterDatabase
+import com.example.beers_of_the_world.database.RegisterEntity
 import com.example.beers_of_the_world.database.RegisterRepository
 import com.example.beers_of_the_world.databinding.FragmentLoginBinding
 import com.example.beers_of_the_world.ui.activities.MainActivity
@@ -159,7 +160,8 @@ class LoginFragment : Fragment() {
     private fun buttonPassToLogin() {
         binding.submitButton.setOnClickListener() {
             //Toast.makeText(getActivity(), "LAUNCH LOGIN FRAGMENT", Toast.LENGTH_LONG).show();
-            loginViewModel.loginButton()
+            //loginViewModel.loginButton()
+            sendNameAndPassword()
             //We compare the data of the user.
 
 
@@ -176,6 +178,13 @@ class LoginFragment : Fragment() {
             appFinish()
 
         }
+
+    }
+    fun sendNameAndPassword() {
+        var username = binding.userNameTextField.text.toString()
+        var password = binding.passwordTextField.text.toString()
+
+        loginViewModel.loginButton(username,password)
 
     }
 

@@ -1,5 +1,6 @@
 package com.example.beers_of_the_world.ui.fragments
 
+import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,6 +11,7 @@ import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.beers_of_the_world.database.RegisterDatabase
@@ -21,7 +23,10 @@ import com.example.beers_of_the_world.viewModel.MainViewModel
 import com.example.beers_of_the_world.viewModel.RegisterViewModel
 import com.example.beers_of_the_world.viewModel.RegisterViewModelFactory
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 
 class RegisterFragment : Fragment() {
@@ -109,14 +114,21 @@ class RegisterFragment : Fragment() {
 
         val registerEntity = RegisterEntity(0, firstName, lastName, userName, password)
         Toast.makeText(getActivity(), ""+firstName, Toast.LENGTH_LONG).show();
-        registerViewModel.sumbitButton(registerEntity)
+            registerViewModel.sumbitButton(registerEntity)
+
     }
 
 
     private fun buildListeners() {
         onFragmentBackPressed(closeSession = true)
         binding.submitButton.setOnClickListener {
-            registerQuestion()
+           sendUser()
+
+
+
+            comeBackFirstFragment()
+
+            //registerQuestion()
             //comeBackFirstFragment()
         }
     }
@@ -129,6 +141,28 @@ class RegisterFragment : Fragment() {
 
             })
     }
+
+/*
+    public fun getBeers() {
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = getRetrofit().create(APIService::class.java).getBeer("").execute()
+            val beert = response.body()
+            beert?.let {
+                initAdapter1(it)
+                //var beeres = beers[id]
+            }
+
+        }
+    }
+
+    //Coroutine to get the beers in the background.
+    private fun getRetrofit(): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl("https://api.punkapi.com/v2/beers/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+*/
 
 
     fun okQuestion(
@@ -147,7 +181,8 @@ class RegisterFragment : Fragment() {
                 dialog.dismiss()
                 //appFinish()
                 sendUser()
-                comeBackFirstFragment()
+                    comeBackFirstFragment()
+
             }
             .setNegativeButton("NO") { dialog, _ ->
                 noFunc?.let { noFunc() }

@@ -1,6 +1,4 @@
-/*
- * Copyright (c) FS
- */
+
 
 package com.example.beers_of_the_world.database
 
@@ -9,6 +7,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
+//Creation of the database.
 @Database(entities = [RegisterEntity::class], version = 1, exportSchema = false)
 abstract class RegisterDatabase : RoomDatabase() {
 
