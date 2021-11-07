@@ -2,12 +2,16 @@
 
 package com.example.beers_of_the_world.repositories
 
+import android.content.Context
+import android.widget.Toast
+import androidx.datastore.preferences.createDataStore
+import androidx.datastore.preferences.edit
 import androidx.datastore.preferences.preferencesKey
-import com.example.beers_of_the_world.ui.fragments.RegisterFragment
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 
-class UserPreferences(context: RegisterFragment) {
+class UserPreferences(context: Context) {
 
     //Create the dataStore
     private val dataStore = context.createDataStore(name = "user_prefs")

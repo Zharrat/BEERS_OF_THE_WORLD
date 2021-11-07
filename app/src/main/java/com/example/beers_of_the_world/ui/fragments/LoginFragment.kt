@@ -41,7 +41,7 @@ class LoginFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
+        this.userPreferences = activity?.let { UserPreferences(it) }!!
     }
 
     override fun onCreateView(

@@ -1,5 +1,6 @@
 package com.example.beers_of_the_world.ui.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -31,14 +32,13 @@ class RegisterFragment : Fragment() {
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var registerViewModel: RegisterViewModel
 
-    lateinit var userPreferences: UserPreferences
-    var name = ""
+    /*lateinit var userPreferences: UserPreferences
+    var name = ""*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //Get reference to our userManager class
-        userPreferences = UserPreferences(this)
+
 
     }
 
@@ -92,7 +92,7 @@ class RegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        observeData()
+        //observeData()
         /*subscribeUI()*/
         buildListeners()
 
@@ -122,7 +122,7 @@ class RegisterFragment : Fragment() {
         }
     }
 
-    private fun observeData() {
+    /*private fun observeData() {
 
         //Updates name
         userPreferences.userNameFlow.asLiveData().observe(viewLifecycleOwner, {
@@ -131,7 +131,7 @@ class RegisterFragment : Fragment() {
             binding.tvusername.text= it.toString()
 
         })
-    }
+    }*/
 
     private fun registerQuestion() {
         okQuestion(

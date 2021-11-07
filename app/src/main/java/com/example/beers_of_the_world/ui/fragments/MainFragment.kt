@@ -14,6 +14,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.asLiveData
 
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
@@ -22,6 +23,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.beers_of_the_world.BeerResponse
 import com.example.beers_of_the_world.viewModel.MainViewModel
 import com.example.beers_of_the_world.databinding.FragmentMainBinding
+import com.example.beers_of_the_world.repositories.UserPreferences
 import com.example.beers_of_the_world.ui.adapter.BeerAdapter
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
@@ -35,6 +37,8 @@ class MainFragment : Fragment(), BeerAdapter.OnItemClickListener {
     private lateinit var navController: NavController
     private lateinit var beerAdapter: BeerAdapter
 
+    lateinit var userPreferences: UserPreferences
+    var name = ""
 
     //To can access to the methods of the class
     private val MainViewModel: MainViewModel by viewModels()
@@ -42,6 +46,10 @@ class MainFragment : Fragment(), BeerAdapter.OnItemClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //Get reference to our userPreferences class
+        userPreferences = activity?.let { UserPreferences(it) }!!
+
         //We show the list of beers in the first fragment.
         //We obtain the beers from the api.
         MainViewModel.getBeers()
@@ -63,7 +71,7 @@ class MainFragment : Fragment(), BeerAdapter.OnItemClickListener {
 
         //We subscribe to the data changes.
         subscribeUI()
-
+        observeData()
         //We create the listeners.
         buildListeners()
 
@@ -104,6 +112,18 @@ class MainFragment : Fragment(), BeerAdapter.OnItemClickListener {
         observeRVBeer()
         //We observe the changes in the selected beer.
         observeSelectedBeer()
+    }
+
+    private fun observeData() {
+
+        //Updates name
+        userPreferences.userNameFlow.asLiveData().observe(viewLifecycleOwner, {
+
+            //We write the userName in the fragment
+            name = it
+            binding.tvUserName.text=it
+
+        })
     }
 
 
