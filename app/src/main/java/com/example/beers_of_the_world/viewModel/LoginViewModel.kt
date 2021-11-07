@@ -59,6 +59,7 @@ class LoginViewModel (private val repository: RegisterRepository, application: A
         _navigatetoRegister.value = true
     }
 
+
     fun loginButton(username: String, password: String) {
 
         inputUsername.value= username

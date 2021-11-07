@@ -77,6 +77,8 @@ class RegisterViewModel(private val repository: RegisterRepository, application:
         _usersNames.postValue(aNames)
     }
 
+
+
     public fun sumbitButton(registerEntity: RegisterEntity) {
         Log.i("MYTAG", "Inside SUBMIT BUTTON")
         inputFirstName.value= registerEntity.firstName

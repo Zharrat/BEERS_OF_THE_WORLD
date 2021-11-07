@@ -4,6 +4,7 @@
 
 package com.example.beers_of_the_world.ui.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -60,6 +61,7 @@ class MainFragment : Fragment(), BeerAdapter.OnItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //getString()
         //We subscribe to the data changes.
         subscribeUI()
 
@@ -67,6 +69,16 @@ class MainFragment : Fragment(), BeerAdapter.OnItemClickListener {
         buildListeners()
 
     }
+
+    /*fun getString() {
+
+        val bundle= intent.extras
+        val dato= bundle?.getString("nombre")
+        dato?.let {
+            binding.tvUserName.text = dato
+        }
+    }*/
+
 
     private fun initRecycler(abeers: List<BeerResponse>) {
         buildAdapter(abeers)

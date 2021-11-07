@@ -95,6 +95,10 @@ class RegisterFragment : Fragment() {
 
     }
 
+
+
+
+
     fun sendUser() {
 
         var firstName = binding.firstNameTextField.text.toString()
@@ -114,9 +118,7 @@ class RegisterFragment : Fragment() {
         onFragmentBackPressed(closeSession = true)
         binding.submitButton.setOnClickListener {
             //sendUser()
-
             //comeBackFirstFragment()
-
             registerQuestion()
             //comeBackFirstFragment()
         }

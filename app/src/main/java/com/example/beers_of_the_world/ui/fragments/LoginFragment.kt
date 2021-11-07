@@ -127,24 +127,15 @@ class LoginFragment : Fragment() {
             manageFragmentsDirections()
         }
 
-
-
     }
-    /*   private fun observeButtonToRegister() {
-           MainViewModel.beerSelected.observe(viewLifecycleOwner, Observer {
-               it?.let {
-                   manageFragmentsDirections(it)
-               }
-           })
-       }*/
 
-    /*   private fun buttonPassToRegister() {
-           binding.ivregister.setOnClickListener() {
-               it?.let {
-                   manageFragmentsDirections(it)
-               }
-           }
-       }*/
+   /* fun sendUserName() {
+        var userName = binding.userNameTextField.text.toString()
+        loginViewModel.sendUserName(userName)
+
+    }*/
+
+
 
     private fun manageFragmentsDirections() {
         findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
@@ -189,7 +180,14 @@ class LoginFragment : Fragment() {
     }
 
     private fun loggedOK () {
+        var userName = binding.userNameTextField.text.toString()
+
         startActivity(Intent(requireContext(), MainActivity::class.java))
+
+        //To send an string to other activity
+        /*val intent= Intent(requireContext(),MainActivity::class.java)
+        intent.putExtra("nombre",userName)
+        startActivity(intent)*/
         //finish the current activity.
         appFinish()
     }

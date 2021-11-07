@@ -26,4 +26,10 @@
         android:textFontWeight="@integer/material_motion_duration_long_2"
         android:textSize="30sp" />
 
+    <TextView
+        android:id="@+id/tvUserName"
+        android:layout_width="159dp"
+        android:layout_height="34dp"
+        android:text="" />
+
 </FrameLayout>
