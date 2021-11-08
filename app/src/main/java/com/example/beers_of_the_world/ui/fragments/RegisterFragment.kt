@@ -1,6 +1,5 @@
 package com.example.beers_of_the_world.ui.fragments
 
-import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,14 +10,15 @@ import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.asLiveData
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.beers_of_the_world.database.RegisterDatabase
 import com.example.beers_of_the_world.database.RegisterEntity
 import com.example.beers_of_the_world.database.RegisterRepository
 import com.example.beers_of_the_world.databinding.FragmentRegisterBinding
+import com.example.beers_of_the_world.repositories.UserPreferences
 import com.example.beers_of_the_world.viewModel.LoginViewModel
-import com.example.beers_of_the_world.viewModel.MainViewModel
 import com.example.beers_of_the_world.viewModel.RegisterViewModel
 import com.example.beers_of_the_world.viewModel.RegisterViewModelFactory
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -31,9 +31,14 @@ class RegisterFragment : Fragment() {
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var registerViewModel: RegisterViewModel
 
+    lateinit var userPreferences: UserPreferences
+    var name = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //Get reference to our userManager class
+        userPreferences = UserPreferences(this)
 
     }
 
@@ -87,7 +92,7 @@ class RegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        observeData()
         /*subscribeUI()*/
         buildListeners()
 
@@ -115,6 +120,17 @@ class RegisterFragment : Fragment() {
             registerQuestion()
             //comeBackFirstFragment()
         }
+    }
+
+    private fun observeData() {
+
+        //Updates name
+        userPreferences.userNameFlow.asLiveData().observe(viewLifecycleOwner, {
+
+            name = it
+            binding.tvusername.text= it.toString()
+
+        })
     }
 
     private fun registerQuestion() {

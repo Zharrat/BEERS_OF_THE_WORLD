@@ -7,6 +7,7 @@ import androidx.databinding.Observable
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.beers_of_the_world.database.RegisterRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -76,6 +77,8 @@ class LoginViewModel(private val repository: RegisterRepository, application: Ap
             }
         }
     }
+
+
 
 
     fun doneNavigatingRegiter() {

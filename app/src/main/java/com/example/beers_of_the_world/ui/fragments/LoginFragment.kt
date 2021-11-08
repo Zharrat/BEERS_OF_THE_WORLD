@@ -13,16 +13,20 @@ import androidx.activity.OnBackPressedCallback
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.asLiveData
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.beers_of_the_world.database.RegisterDatabase
 import com.example.beers_of_the_world.database.RegisterEntity
 import com.example.beers_of_the_world.database.RegisterRepository
 import com.example.beers_of_the_world.databinding.FragmentLoginBinding
+import com.example.beers_of_the_world.repositories.UserPreferences
 import com.example.beers_of_the_world.ui.activities.MainActivity
 import com.example.beers_of_the_world.viewModel.LoginViewModel
 import com.example.beers_of_the_world.viewModel.LoginViewModelFactory
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 
 class LoginFragment : Fragment() {
@@ -31,9 +35,12 @@ class LoginFragment : Fragment() {
     private lateinit var navController: NavController
     private lateinit var loginViewModel: LoginViewModel
 
+    lateinit var userPreferences : UserPreferences
+    var name=""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
     }
 
@@ -109,6 +116,7 @@ class LoginFragment : Fragment() {
         /*subscribeUI()*/
     }
 
+
     //We create the listeners.
     private fun buildListeners() {
         onFragmentBackPressed(closeSession = true)
@@ -120,11 +128,29 @@ class LoginFragment : Fragment() {
         }
     }
 
-    /* fun sendUserName() {
-         var userName = binding.userNameTextField.text.toString()
-         loginViewModel.sendUserName(userName)
+ /*   private fun observeData() {
 
-     }*/
+        //Updates name
+        userPreferences.userNameFlow.asLiveData().observe(viewLifecycleOwner, {
+            name = it
+            binding.userNameTextField.text = name
+        })
+    }*/
+
+
+    private fun saveData() {
+
+        //Gets the user input and saves it
+           var name = binding.userNameTextField.text.toString()
+
+            //Stores the name.
+            GlobalScope.launch {
+                userPreferences.storeUser(name)
+            }
+
+
+
+    }
 
     private fun manageFragmentsDirections() {
         findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
@@ -166,7 +192,7 @@ class LoginFragment : Fragment() {
 
         //We get the username of the user.
         var userName = binding.userNameTextField.text.toString()
-
+        saveData()
         startActivity(Intent(requireContext(), MainActivity::class.java))
 
         //finish the current activity.
@@ -234,7 +260,6 @@ class LoginFragment : Fragment() {
     fun appFinish() {
         activity?.finish()
     }
-
 }
 
 

@@ -69,19 +69,6 @@ class MainFragment : Fragment(), BeerAdapter.OnItemClickListener {
 
     }
 
-/*    fun getString() {
-
-    *//*    val bundle= intent.extras
-        val dato= bundle?.getString("nombre")
-        dato?.let {
-            binding.tvUserName.text = dato
-        }*//*
-        val objetoIntent: Intent
-        var nombre= objetoIntent.getStringExtra("nombre")
-        binding.tvUserName.text= "$nombre"
-
-    }*/
-
     private fun initRecycler(abeers: List<BeerResponse>) {
         buildAdapter(abeers)
 
