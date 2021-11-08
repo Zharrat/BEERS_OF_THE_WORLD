@@ -10,7 +10,6 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="BEERS_OF_THE_WORLD"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.beers_of_the_world">
         <activity

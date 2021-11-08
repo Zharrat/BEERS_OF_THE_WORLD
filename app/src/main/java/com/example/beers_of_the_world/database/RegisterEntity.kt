@@ -8,6 +8,8 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+
+//Users database
 @Entity(tableName = "Register_users_table")
 data class RegisterEntity(
 

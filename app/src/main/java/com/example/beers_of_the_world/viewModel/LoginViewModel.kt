@@ -1,5 +1,3 @@
-
-
 package com.example.beers_of_the_world.viewModel
 
 import android.app.Application
@@ -15,7 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class LoginViewModel (private val repository: RegisterRepository, application: Application) :
+class LoginViewModel(private val repository: RegisterRepository, application: Application) :
     AndroidViewModel(application), Observable {
 
     val users = repository.users
@@ -30,27 +28,22 @@ class LoginViewModel (private val repository: RegisterRepository, application: A
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
     private val _navigatetoRegister = MutableLiveData<Boolean>()
-
     val navigatetoRegister: LiveData<Boolean>
         get() = _navigatetoRegister
 
     private val _navigatetoUserDetails = MutableLiveData<Boolean>()
-
     val navigatetoUserDetails: LiveData<Boolean>
         get() = _navigatetoUserDetails
 
     private val _errorToast = MutableLiveData<Boolean>()
-
     val errotoast: LiveData<Boolean>
         get() = _errorToast
 
     private val _errorToastUsername = MutableLiveData<Boolean>()
-
     val errotoastUsername: LiveData<Boolean>
         get() = _errorToastUsername
 
     private val _errorToastInvalidPassword = MutableLiveData<Boolean>()
-
     val errorToastInvalidPassword: LiveData<Boolean>
         get() = _errorToastInvalidPassword
 
@@ -62,19 +55,19 @@ class LoginViewModel (private val repository: RegisterRepository, application: A
 
     fun loginButton(username: String, password: String) {
 
-        inputUsername.value= username
-        inputPassword.value= password
+        inputUsername.value = username
+        inputPassword.value = password
         if (inputUsername.value == null || inputPassword.value == null) {
             _errorToast.value = true
         } else {
             uiScope.launch {
                 val usersNames = repository.getUserName(inputUsername.value!!)
                 if (usersNames != null) {
-                    if(usersNames.passwrd == inputPassword.value){
+                    if (usersNames.passwrd == inputPassword.value) {
                         inputUsername.value = null
                         inputPassword.value = null
                         _navigatetoUserDetails.value = true
-                    }else{
+                    } else {
                         _errorToastInvalidPassword.value = true
                     }
                 } else {
@@ -83,8 +76,6 @@ class LoginViewModel (private val repository: RegisterRepository, application: A
             }
         }
     }
-
-
 
 
     fun doneNavigatingRegiter() {
@@ -103,16 +94,14 @@ class LoginViewModel (private val repository: RegisterRepository, application: A
 
 
     fun donetoastErrorUsername() {
-        _errorToastUsername .value = false
+        _errorToastUsername.value = false
         Log.i("MYTAG", "Done taoasting ")
     }
 
     fun donetoastInvalidPassword() {
-        _errorToastInvalidPassword .value = false
+        _errorToastInvalidPassword.value = false
         Log.i("MYTAG", "Done taoasting ")
     }
-
-
 
     override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
     }

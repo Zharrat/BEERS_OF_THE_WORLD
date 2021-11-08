@@ -61,7 +61,6 @@ class MainFragment : Fragment(), BeerAdapter.OnItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //getString()
         //We subscribe to the data changes.
         subscribeUI()
 
@@ -70,15 +69,18 @@ class MainFragment : Fragment(), BeerAdapter.OnItemClickListener {
 
     }
 
-    /*fun getString() {
+/*    fun getString() {
 
-        val bundle= intent.extras
+    *//*    val bundle= intent.extras
         val dato= bundle?.getString("nombre")
         dato?.let {
             binding.tvUserName.text = dato
-        }
-    }*/
+        }*//*
+        val objetoIntent: Intent
+        var nombre= objetoIntent.getStringExtra("nombre")
+        binding.tvUserName.text= "$nombre"
 
+    }*/
 
     private fun initRecycler(abeers: List<BeerResponse>) {
         buildAdapter(abeers)
@@ -122,7 +124,7 @@ class MainFragment : Fragment(), BeerAdapter.OnItemClickListener {
         MainViewModel.getBeerByPos(position)
     }
 
-    //Receive an object and launch the second fragment.
+    //Receive an object and launch the detail fragment.
     fun manageFragmentsDirections(beer: BeerResponse) {
 
         val action: NavDirections = MainFragmentDirections.actionGlobalDetailFragment(beer)

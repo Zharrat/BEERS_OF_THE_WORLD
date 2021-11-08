@@ -8,6 +8,8 @@ import androidx.room.*
 @Dao
 interface RegisterDatabaseDao {
 
+
+    //Querys to get data from the database.
     @Insert
     suspend fun insert(register: RegisterEntity)
 

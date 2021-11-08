@@ -89,15 +89,9 @@ class RegisterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         /*subscribeUI()*/
-
         buildListeners()
 
-
     }
-
-
-
-
 
     fun sendUser() {
 
@@ -112,7 +106,6 @@ class RegisterFragment : Fragment() {
         registerViewModel.sumbitButton(registerEntity)
 
     }
-
 
     private fun buildListeners() {
         onFragmentBackPressed(closeSession = true)

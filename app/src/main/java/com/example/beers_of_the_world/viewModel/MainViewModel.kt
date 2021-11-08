@@ -53,7 +53,6 @@ class MainViewModel : ViewModel() {
             val beert = response.body()
             beert?.let {
                 initAdapter(it)
-                //var beeres = beers[id]
             }
 
         }
@@ -65,7 +64,7 @@ class MainViewModel : ViewModel() {
             val beert = response.body()
             beert?.let {
                 initAdapter1(it)
-                //var beeres = beers[id]
+
             }
 
         }

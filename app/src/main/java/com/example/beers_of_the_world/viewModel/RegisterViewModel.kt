@@ -30,21 +30,20 @@ class RegisterViewModel(private val repository: RegisterRepository, application:
         Log.i("MYTAG", "init")
     }
 
-
     private var userdata: String? = null
 
     var userDetailsLiveData = MutableLiveData<Array<RegisterEntity>>()
 
-    @Bindable
+
     var inputFirstName = MutableLiveData<String>()
 
-    @Bindable
+
     val inputLastName = MutableLiveData<String>()
 
-    @Bindable
+
     val inputUsername = MutableLiveData<String>()
 
-    @Bindable
+
     val inputPassword = MutableLiveData<String>()
 
     private val viewModelJob = Job()
