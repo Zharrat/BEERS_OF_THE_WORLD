@@ -1,7 +1,7 @@
 
 package com.example.beers_of_the_world.repositories
 
-import com.example.beers_of_the_world.data.network.Resource
+import com.example.beers_of_the_world.database.network.Resource
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

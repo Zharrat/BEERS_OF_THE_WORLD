@@ -4,6 +4,7 @@
 
 package com.example.beers_of_the_world.ui.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -25,12 +26,14 @@ import com.example.beers_of_the_world.ui.adapter.BeerAdapter
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 
-class MainFragment : Fragment() ,BeerAdapter.OnItemClickListener{
+class MainFragment : Fragment(), BeerAdapter.OnItemClickListener {
 
+    //To call to elemets from the layout
     private lateinit var binding: FragmentMainBinding
+
+
     private lateinit var navController: NavController
     private lateinit var beerAdapter: BeerAdapter
-
 
 
     //To can access to the methods of the class
@@ -40,7 +43,7 @@ class MainFragment : Fragment() ,BeerAdapter.OnItemClickListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //We show the list of beers in the first fragment.
-        /*MainViewModel.getListOfBeers()*/
+        //We obtain the beers from the api.
         MainViewModel.getBeers()
 
 
@@ -51,37 +54,41 @@ class MainFragment : Fragment() ,BeerAdapter.OnItemClickListener{
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMainBinding.inflate(inflater, container, false)
-        // Inflates the layout for this fragment
         return binding.root
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //We subscribe to the data changes.
 
+        //We subscribe to the data changes.
         subscribeUI()
+
+        //We create the listeners.
         buildListeners()
 
     }
 
-    /*   private fun initRecycler(abeers: List<BeerResponse>) {
-           buildAdapter(abeers)
-           *//*binding.rvBeers.layoutManager = LinearLayoutManager(binding.rvBeers.context)
+/*    fun getString() {
 
-        val adapter= BeerAdapter(abeers)
-        binding.rvBeers.adapter=adapter*//*
+    *//*    val bundle= intent.extras
+        val dato= bundle?.getString("nombre")
+        dato?.let {
+            binding.tvUserName.text = dato
+        }*//*
+        val objetoIntent: Intent
+        var nombre= objetoIntent.getStringExtra("nombre")
+        binding.tvUserName.text= "$nombre"
 
     }*/
 
     private fun initRecycler(abeers: List<BeerResponse>) {
         buildAdapter(abeers)
 
-
     }
 
     private fun buildAdapter(abeers: List<BeerResponse>) {
-        beerAdapter = BeerAdapter(this,abeers)
+        beerAdapter = BeerAdapter(this, abeers)
 
         binding.rvBeers.apply {
             layoutManager =
@@ -90,6 +97,7 @@ class MainFragment : Fragment() ,BeerAdapter.OnItemClickListener{
         }
     }
 
+    //The action when the user clicks in the one item.
     override fun onItemClick(position: Int) {
         //Toast.makeText(getActivity(), "Ha pulsado $position", Toast.LENGTH_LONG).show();
         MainViewModel.getBeerByPos(position)
@@ -97,26 +105,26 @@ class MainFragment : Fragment() ,BeerAdapter.OnItemClickListener{
     }
 
 
-
-
-    //Listeners
-    private fun buildListeners() {
-
+    //The listeners
+    private fun buildListeners() { //We touch the back button.
         onFragmentBackPressed(closeSession = true)
     }
 
     //We subscribe to the data changes.
     private fun subscribeUI() {
-        //observeItems()
+
+        //We observe the changes in the recycler view of the beers.
         observeRVBeer()
+        //We observe the changes in the selected beer.
         observeSelectedBeer()
     }
+
 
     private fun getABeer(position: Int) {
         MainViewModel.getBeerByPos(position)
     }
 
-    //Receive an object and launch the second fragment.
+    //Receive an object and launch the detail fragment.
     fun manageFragmentsDirections(beer: BeerResponse) {
 
         val action: NavDirections = MainFragmentDirections.actionGlobalDetailFragment(beer)
@@ -124,11 +132,11 @@ class MainFragment : Fragment() ,BeerAdapter.OnItemClickListener{
 
     }
 
-
+    //Observers
     private fun observeRVBeer() {
         MainViewModel.beersList.observe(viewLifecycleOwner, Observer {
             it?.let {
-                Toast.makeText(getActivity(), "Datos actualizados", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "UPDATED DATA", Toast.LENGTH_LONG).show();
                 initRecycler(it)
             }
         })
@@ -142,24 +150,6 @@ class MainFragment : Fragment() ,BeerAdapter.OnItemClickListener{
         })
     }
 
-
-    //Observe the changes.
-   /* private fun observeItems() {
-        MainViewModel.beerSelected.observe(viewLifecycleOwner, Observer {
-            it?.let {
-                manageFragmentsDirections(it)
-            }
-        })
-    }*/
-
-    //Function to display the array of names in the listview.
-    /*   private fun displayNames(aNames: List<String>) {
-           listAdapter =
-               activity?.let {
-                   ArrayAdapter<String>(it, R.layout.simple_list_item_1, aNames)
-               }
-
-       }*/
 
     //Function when we press the back button.
     fun onFragmentBackPressed(
@@ -186,8 +176,8 @@ class MainFragment : Fragment() ,BeerAdapter.OnItemClickListener{
     //We launch the question.
     fun question() {
         finalQuestion(
-            "SALIR",
-            "¿Seguro que quieres salir?",
+            "EXIT",
+            "¿ARE YOU SURE?",
             {
                 appFinish()
             })
@@ -199,13 +189,13 @@ class MainFragment : Fragment() ,BeerAdapter.OnItemClickListener{
         message: String,
         yesFunc: () -> Unit,
         noFunc: (() -> Unit)? = null,
-        yesMessage: String? = "SI",
+        yesMessage: String? = "YES",
         noMessage: String? = "NO"
     ) {
         MaterialAlertDialogBuilder(requireContext())
             .setTitle("BEERS OF THE WORLD")
-            .setMessage("¿QUIERE SALIR DE LA APLICACIÓN?")
-            .setPositiveButton("SI ,SALIR") { dialog, _ ->
+            .setMessage("¿EXIT?")
+            .setPositiveButton("YES") { dialog, _ ->
                 yesFunc()
                 dialog.dismiss()
                 appFinish()

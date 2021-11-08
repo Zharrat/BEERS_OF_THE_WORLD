@@ -1,6 +1,6 @@
 
 
-package com.example.beers_of_the_world.data.network
+package com.example.beers_of_the_world.database.network
 
 import com.example.beers_of_the_world.BeerResponse
 import retrofit2.http.*

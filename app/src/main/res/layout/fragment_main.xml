@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -24,5 +25,11 @@
         android:textColor="#431D0B"
         android:textFontWeight="@integer/material_motion_duration_long_2"
         android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/tvUserName"
+        android:layout_width="159dp"
+        android:layout_height="34dp"
+        android:text="" />
 
 </FrameLayout>

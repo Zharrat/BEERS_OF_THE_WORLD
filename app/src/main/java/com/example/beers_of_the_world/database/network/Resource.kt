@@ -1,5 +1,5 @@
 
-package com.example.beers_of_the_world.data.network
+package com.example.beers_of_the_world.database.network
 
 import okhttp3.ResponseBody
 

@@ -53,7 +53,6 @@ class MainViewModel : ViewModel() {
             val beert = response.body()
             beert?.let {
                 initAdapter(it)
-                //var beeres = beers[id]
             }
 
         }
@@ -65,7 +64,7 @@ class MainViewModel : ViewModel() {
             val beert = response.body()
             beert?.let {
                 initAdapter1(it)
-                //var beeres = beers[id]
+
             }
 
         }
@@ -109,7 +108,7 @@ class MainViewModel : ViewModel() {
 
     }
 
-    //Coroutine to execute in the background.
+    //Coroutine to get the beers in the background.
     private fun getRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl("https://api.punkapi.com/v2/beers/")
