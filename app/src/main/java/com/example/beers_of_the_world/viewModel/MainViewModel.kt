@@ -12,6 +12,7 @@ import com.example.beers_of_the_world.APIService
 import com.example.beers_of_the_world.BeerResponse
 import com.example.beers_of_the_world.Event
 import com.example.beers_of_the_world.Resource
+import com.example.beers_of_the_world.utils.getRetrofit
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -109,12 +110,12 @@ class MainViewModel : ViewModel() {
     }
 
     //Coroutine to get the beers in the background.
-    private fun getRetrofit(): Retrofit {
+   /* private fun getRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl("https://api.punkapi.com/v2/beers/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-    }
+    }*/
 
 
 }
