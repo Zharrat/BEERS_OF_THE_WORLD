@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -17,6 +18,7 @@ import com.example.beers_of_the_world.BeerResponse
 import com.example.beers_of_the_world.viewModel.DetailViewModel
 import com.example.beers_of_the_world.R
 import com.example.beers_of_the_world.databinding.FragmentDetailBinding
+import com.squareup.picasso.Picasso
 
 
 class DetailFragment : Fragment() {
@@ -59,6 +61,7 @@ class DetailFragment : Fragment() {
     fun receiveObject(){
         beerr = arguments?.let { DetailFragmentArgs.fromBundle(it).beer }!!
         binding.tv.text = beerr.description.toString()
+        Picasso.get().load(beerr.image_url).into(binding.ivBeerDetail)
     }
 
     fun subscribeUI() {
