@@ -17,6 +17,7 @@ import androidx.lifecycle.asLiveData
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.beers_of_the_world.database.RegisterDatabase
+import com.example.beers_of_the_world.database.RegisterDatabaseDao
 import com.example.beers_of_the_world.database.RegisterEntity
 import com.example.beers_of_the_world.database.RegisterRepository
 import com.example.beers_of_the_world.databinding.FragmentLoginBinding
@@ -34,14 +35,21 @@ class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
     private lateinit var navController: NavController
     private lateinit var loginViewModel: LoginViewModel
+    private lateinit var registerDatabaseDao: RegisterDatabaseDao
 
     lateinit var userPreferences : UserPreferences
     var name=""
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         this.userPreferences = activity?.let { UserPreferences(it) }!!
+
+        //buttonSave()
+
+        //observeData()
+       /* userPreferences=UserPreferences(this)*/
     }
 
     override fun onCreateView(
@@ -112,7 +120,7 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        //testSomeUserLogged()
         /*subscribeUI()*/
     }
 
@@ -120,35 +128,44 @@ class LoginFragment : Fragment() {
     //We create the listeners.
     private fun buildListeners() {
         onFragmentBackPressed(closeSession = true)
+        buttonSave()
+        observeData()
         //buttonPassToRegister()
-        buttonPassToLogin()
-        buttonPassWithoutLogin()
+        //buttonPassToLogin()
+        //buttonPassWithoutLogin()
         binding.ibregister.setOnClickListener {
             manageFragmentsDirections()
         }
     }
 
- /*   private fun observeData() {
-
+    private fun observeData() {
         //Updates name
-        userPreferences.userNameFlow.asLiveData().observe(viewLifecycleOwner, {
-            name = it
-            binding.userNameTextField.text = name
-        })
-    }*/
+        if (userPreferences.userNameFlow.toString() != "") {
+                userPreferences.userNameFlow.asLiveData().observe(viewLifecycleOwner, {
+                startActivity(Intent(requireContext(), MainActivity::class.java))
+                //finish the current activity.
+                appFinish()
+                //Toast.makeText(getActivity(), "LAUNCH LOGIN FRAGMENT", Toast.LENGTH_LONG).show();
+            })
+        }else {
+            Toast.makeText(getActivity(), "NO USER LOGGED", Toast.LENGTH_LONG).show();
+        }
+    }
+
+
 
 
     private fun saveData() {
 
-        //Gets the user input and saves it
+        Toast.makeText(getActivity(), "LAUNCH LOGIN FRAGMENT", Toast.LENGTH_LONG).show();
+
+       /* //Gets the user input and saves it
            var name = binding.userNameTextField.text.toString()
 
             //Stores the name.
             GlobalScope.launch {
                 userPreferences.storeUser(name)
-            }
-
-
+            }*/
 
     }
 
@@ -156,30 +173,60 @@ class LoginFragment : Fragment() {
         findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
     }
 
-    private fun buttonPassToLogin() {
-        binding.submitButton.setOnClickListener() {
-            //Toast.makeText(getActivity(), "LAUNCH LOGIN FRAGMENT", Toast.LENGTH_LONG).show();
-            //loginViewModel.loginButton()
-            sendNameAndPassword()
-            //We compare the data of the user.
-
-
-        }
-    }
-
-    private fun buttonPassWithoutLogin() {
-        binding.btenter.setOnClickListener() {
-            //Toast.makeText(getActivity(), "LAUNCH LOGIN ACTIVITY", Toast.LENGTH_LONG).show();
-
-            //Starts the second activity.
+    /*private fun testSomeUserLogged() {
+        var numusers= registerDatabaseDao.countAllUsers()
+        if (numusers>0){
             startActivity(Intent(requireContext(), MainActivity::class.java))
             //finish the current activity.
             appFinish()
 
         }
 
+    }*/
+
+
+    fun buttonPassToLogin() {
+        binding.submitButton.setOnClickListener() {
+            Toast.makeText(getActivity(), "LAUNCH LOGIN FRAGMENT", Toast.LENGTH_LONG).show();
+            //loginViewModel.loginButton()
+            //sendNameAndPassword()
+            //We compare the data of the user.
+
+
+        }
     }
 
+    fun buttonSave() {
+       binding.buttonSave.setOnClickListener() {
+           //Toast.makeText(getActivity(), "LAUNCH LOGIN ACTIVITY", Toast.LENGTH_LONG).show();
+           name = binding.userNameTextField.text.toString()
+
+            //Stores the values
+            GlobalScope.launch {
+                userPreferences.storeUser(name)
+            }
+
+           Toast.makeText(getActivity(), "USER SAVED", Toast.LENGTH_LONG).show();
+
+        }
+
+    }
+
+
+    private fun buttonPassWithoutLogin() {
+        binding.btenter.setOnClickListener() {
+            Toast.makeText(getActivity(), "LAUNCH LOGIN ACTIVITY", Toast.LENGTH_LONG).show();
+
+            /*//Starts the second activity.
+            startActivity(Intent(requireContext(), MainActivity::class.java))
+            //finish the current activity.
+            appFinish()*/
+
+        }
+
+    }
+
+    //We send name an d password to other function.
     fun sendNameAndPassword() {
         var username = binding.userNameTextField.text.toString()
         var password = binding.passwordTextField.text.toString()
@@ -188,6 +235,7 @@ class LoginFragment : Fragment() {
 
     }
 
+    //We allow the user to use our app.
     private fun loggedOK() {
 
         //We get the username of the user.

@@ -19,8 +19,13 @@ class RegisterRepository(private val dao: RegisterDatabaseDao) {
         Log.i("MYTAG", "inside Repository Getusers fun ")
         return dao.getUsername(userName)
     }
-    //suspend fun deleteAll(): Int {
-    //    return dao.deleteAll()
-    //}
+
+    suspend fun countAllUsers(): Int {
+        return dao.countAllUsers()
+    }
+
+    suspend fun deleteAll(): Int {
+        return dao.deleteAll()
+    }
 
 }
