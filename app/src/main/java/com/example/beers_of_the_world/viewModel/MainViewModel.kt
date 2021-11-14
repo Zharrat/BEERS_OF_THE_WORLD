@@ -36,6 +36,7 @@ class MainViewModel : ViewModel() {
     private val _beersNamesList: MutableLiveData<List<String>> = MutableLiveData()
     val beersNamesList: LiveData<List<String>> get() = _beersNamesList
 
+
     fun setBeer(beers: List<BeerResponse>) {
         _beersList.postValue(beers)
     }
@@ -108,6 +109,8 @@ class MainViewModel : ViewModel() {
         setBeerNames(aNames as List<String>)
 
     }
+
+
 
     //Coroutine to get the beers in the background.
    /* private fun getRetrofit(): Retrofit {

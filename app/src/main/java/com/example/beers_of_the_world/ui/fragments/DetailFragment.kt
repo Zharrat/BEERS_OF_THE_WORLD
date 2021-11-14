@@ -71,6 +71,13 @@ class DetailFragment : Fragment() {
     fun buildListeners() {
         //If we are in the second fragment and press the back button.CloseSession = false
         onFragmentBackPressed(closeSession = false)
+
+
+    }
+
+    fun onDialogDisplay(param1: String, param2: String) {
+        val newFragment = DialogFragment.newDialog("$param1","$param2")
+        fragmentManager?.let { it1 -> newFragment.show(it1, DialogFragment.TAG) }
     }
 
     //If we press the back button ,to go back in the app.
@@ -89,9 +96,10 @@ class DetailFragment : Fragment() {
                             //Closes the activity
                             activity!!.finish()
                         } else {
+                                //onDialogDisplay("Estas seguro","seguriiiisimo")
                             //Turns to the previous fragment
                             findNavController().navigate(R.id.mainFragment)
-                            //findNavController().popBackStack()
+
                         }
                     }
                 }

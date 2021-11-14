@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Database App</string>
+    <string name="app_name">Beers of the world</string>
     <string name="FirstNameText">First Name :</string>
     <string name="FirstNameTextField">Enter First Name</string>
     <string name="SecondNameTextField">Enter Second Name</string>
@@ -18,4 +18,8 @@
     <string name="Login_text">Login</string>
     <string name="Login_button">Login</string>
     <string name="signupText">Sign Up!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="show_dialog">Show Dialog</string>
+    <string name="subtitle">Subtitle</string>
+    <string name="title">Title</string>
 </resources>

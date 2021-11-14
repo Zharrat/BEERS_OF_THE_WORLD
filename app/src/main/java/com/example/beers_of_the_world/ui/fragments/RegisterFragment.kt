@@ -118,20 +118,12 @@ class RegisterFragment : Fragment() {
             //sendUser()
             //comeBackFirstFragment()
             registerQuestion()
+
+
             //comeBackFirstFragment()
         }
     }
 
-    /*private fun observeData() {
-
-        //Updates name
-        userPreferences.userNameFlow.asLiveData().observe(viewLifecycleOwner, {
-
-            name = it
-            binding.tvusername.text= it.toString()
-
-        })
-    }*/
 
     private fun registerQuestion() {
         okQuestion(
@@ -200,6 +192,8 @@ class RegisterFragment : Fragment() {
                 //appFinish()
             })
     }
+
+
 
     private fun comeBackFirstFragment() {
         findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToLoginFragment())

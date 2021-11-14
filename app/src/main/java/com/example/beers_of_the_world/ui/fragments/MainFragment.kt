@@ -4,6 +4,7 @@
 
 package com.example.beers_of_the_world.ui.fragments
 
+import android.R
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -26,9 +27,17 @@ import com.example.beers_of_the_world.databinding.FragmentMainBinding
 import com.example.beers_of_the_world.repositories.UserPreferences
 import com.example.beers_of_the_world.ui.adapter.BeerAdapter
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import android.content.ContextWrapper
+
+import android.app.Activity
+import androidx.core.app.ActivityCompat.finishAffinity
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import com.example.beers_of_the_world.viewModel.DialogViewModel
+import com.example.beers_of_the_world.viewModel.SharedViewModel
 
 
-class MainFragment : Fragment(), BeerAdapter.OnItemClickListener {
+class MainFragment : Fragment(), BeerAdapter.OnItemClickListener  {
 
     //To call to elemets from the layout
     private lateinit var binding: FragmentMainBinding
@@ -43,6 +52,7 @@ class MainFragment : Fragment(), BeerAdapter.OnItemClickListener {
     //To can access to the methods of the class
     private val MainViewModel: MainViewModel by viewModels()
 
+    private val DialogViewModel: DialogViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -103,6 +113,7 @@ class MainFragment : Fragment(), BeerAdapter.OnItemClickListener {
     //The listeners
     private fun buildListeners() { //We touch the back button.
         onFragmentBackPressed(closeSession = true)
+        observeResponse()
     }
 
     //We subscribe to the data changes.
@@ -112,6 +123,7 @@ class MainFragment : Fragment(), BeerAdapter.OnItemClickListener {
         observeRVBeer()
         //We observe the changes in the selected beer.
         observeSelectedBeer()
+
     }
 
     private fun observeData() {
@@ -157,6 +169,14 @@ class MainFragment : Fragment(), BeerAdapter.OnItemClickListener {
         })
     }
 
+    private fun observeResponse() {
+        DialogViewModel.response.observe(this, Observer {
+            it?.let {
+                getResponse(it)
+            }
+        })
+    }
+
 
     //Function when we press the back button.
     fun onFragmentBackPressed(
@@ -171,14 +191,41 @@ class MainFragment : Fragment(), BeerAdapter.OnItemClickListener {
                         func()
                     } else {
                         if (closeSession) {
-                            question()
+                            onDialogDisplay("BEERS OF THE WORLD","EXIT¿ARE YOU SURE?")
+                            //question()
                         } else {
+                            //onDialogDisplay("Estas seguro","seguriiiisimo")
                             findNavController().popBackStack()
                         }
                     }
                 }
             })
     }
+
+    //We launch the question.
+    /*fun question() {
+        val newFragment = DialogFragment.newDialog("Fernando", "Es el mejor")
+        *//*fragmentManager?.let { it1 -> newFragment.show(it1, DialogFragment.TAG) }*//*
+        newFragment.show(getSupportFragmentManager(), "custom")
+
+    }*/
+
+    //Function to create the alert dialog
+    fun onDialogDisplay(param1: String, param2: String) {
+        val newFragment = DialogFragment.newDialog("$param1","$param2")
+        fragmentManager?.let { it1 -> newFragment.show(it1, DialogFragment.TAG) }
+    }
+
+    fun getResponse(response : Boolean) {
+
+        appFinish()
+
+
+    }
+
+
+
+
 
     //We launch the question.
     fun question() {
@@ -217,7 +264,13 @@ class MainFragment : Fragment(), BeerAdapter.OnItemClickListener {
     //Exit. App finishes.
     fun appFinish() {
         activity?.finish()
+        activity?.finish()
     }
+
+    /*override fun onDoneClicked(param1: String, param2: String) {
+        TODO("Not yet implemented")
+    }*/
+
 
 }
 
