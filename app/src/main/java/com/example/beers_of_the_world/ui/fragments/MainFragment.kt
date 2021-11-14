@@ -37,7 +37,7 @@ import com.example.beers_of_the_world.viewModel.DialogViewModel
 import com.example.beers_of_the_world.viewModel.SharedViewModel
 
 
-class MainFragment : Fragment(), BeerAdapter.OnItemClickListener  {
+class MainFragment : Fragment(), BeerAdapter.OnItemClickListener,DialogFragment.onButtonClickListener  {
 
     //To call to elemets from the layout
     private lateinit var binding: FragmentMainBinding
@@ -109,11 +109,18 @@ class MainFragment : Fragment(), BeerAdapter.OnItemClickListener  {
 
     }
 
+    override fun onButtonClick(param1: String, param2: String) {
+
+    }
+
 
     //The listeners
     private fun buildListeners() { //We touch the back button.
         onFragmentBackPressed(closeSession = true)
-        observeResponse()
+
+
+
+
     }
 
     //We subscribe to the data changes.
@@ -123,6 +130,7 @@ class MainFragment : Fragment(), BeerAdapter.OnItemClickListener  {
         observeRVBeer()
         //We observe the changes in the selected beer.
         observeSelectedBeer()
+        observeResponse()
 
     }
 
@@ -170,13 +178,13 @@ class MainFragment : Fragment(), BeerAdapter.OnItemClickListener  {
     }
 
     private fun observeResponse() {
-        DialogViewModel.response.observe(this, Observer {
+        DialogViewModel.response.observe(viewLifecycleOwner, Observer {
             it?.let {
+                //Toast.makeText(getActivity(), "CLOSED", Toast.LENGTH_LONG).show();
                 getResponse(it)
             }
         })
     }
-
 
     //Function when we press the back button.
     fun onFragmentBackPressed(

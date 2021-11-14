@@ -3,6 +3,9 @@
 package com.example.beers_of_the_world.ui.fragments
 
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,10 +15,13 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import com.example.beers_of_the_world.R
+import com.example.beers_of_the_world.R.drawable.dialog_bg
 import com.example.beers_of_the_world.databinding.FragmentDetailBinding
 import com.example.beers_of_the_world.databinding.FragmentDialogBinding
 import com.example.beers_of_the_world.databinding.FragmentMainBinding
@@ -25,7 +31,7 @@ import com.example.beers_of_the_world.viewModel.MainViewModel
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class DialogFragment : androidx.fragment.app.DialogFragment() {
+class DialogFragment() : androidx.fragment.app.DialogFragment() {
 
     private var param1: String? = null
     private var param2: String? = null
@@ -66,6 +72,7 @@ class DialogFragment : androidx.fragment.app.DialogFragment() {
         binding = FragmentDialogBinding.inflate(inflater, container, false)
         /*return binding.root*/
         // Inflate the layout for this fragment
+
         Log.d("DialogFragment", "$param1::$param2")
         //val view = inflater.inflate(R.layout.fragment_dialog, container, false)
         binding.titleText.text= param1
@@ -74,6 +81,8 @@ class DialogFragment : androidx.fragment.app.DialogFragment() {
         param2.also { view.findViewById<TextView>(R.id.subtitleText).text = it }*/
         val alertDialogBuilder: AlertDialog.Builder = AlertDialog.Builder(requireContext())
         val alertDialog = alertDialogBuilder.create()
+
+        dialog?.getWindow()?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT));
         alertDialog.show();
 
 
@@ -113,7 +122,7 @@ class DialogFragment : androidx.fragment.app.DialogFragment() {
 
     }
 
-
+    //To can access from all classes
     companion object {
         const val TAG = "DialogFragment"
 
@@ -139,10 +148,13 @@ class DialogFragment : androidx.fragment.app.DialogFragment() {
     }
 
     private fun setupClickListeners(){
+
+
+
         binding.btAccept.setOnClickListener {
-            //activity?.finish()
-            dialogViewModel.sendResponse(true)
-            dismiss()
+            activity?.finish()
+           /* dialogViewModel.sendResponse(true)
+            dismiss()*/
 
         }
 
@@ -162,7 +174,10 @@ class DialogFragment : androidx.fragment.app.DialogFragment() {
         binding.subtitleText.text= param2
     }
 
-    /*interface onClickListener {
-        fun onDoneClicked(param1: String, param2: String)
-    }*/
+
+    interface onButtonClickListener {
+        fun onButtonClick(param1: String, param2: String)
+    }
+
+
 }
