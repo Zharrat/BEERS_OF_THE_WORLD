@@ -102,7 +102,7 @@ class MainFragment : Fragment(), BeerAdapter.OnItemClickListener,DialogFragment.
         }
     }
 
-    //The action when the user clicks in the one item.
+    //The action when the user clicks in one item.
     override fun onItemClick(position: Int) {
         //Toast.makeText(getActivity(), "Ha pulsado $position", Toast.LENGTH_LONG).show();
         MainViewModel.getBeerByPos(position)

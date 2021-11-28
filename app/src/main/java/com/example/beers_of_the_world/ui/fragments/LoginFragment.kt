@@ -107,7 +107,7 @@ class LoginFragment : Fragment() {
         //We observe before pass to the second activity.
         loginViewModel.navigatetoUserDetails.observe(viewLifecycleOwner, Observer { hasFinished ->
             if (hasFinished == true) {
-                //It it changes to true, we go to the second activity
+                //If it changes to true, we go to the second activity
                 loggedOK()
                 loginViewModel.doneNavigatingUserDetails()
             }
