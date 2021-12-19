@@ -140,7 +140,9 @@ class LoginFragment : Fragment() {
 
     private fun observeData() {
         //Updates name
+        //It determines if there is some usser registered.
         if (userPreferences.userNameFlow.toString() != "") {
+            //if there is an user registered, continues the process
                 userPreferences.userNameFlow.asLiveData().observe(viewLifecycleOwner, {
                 startActivity(Intent(requireContext(), MainActivity::class.java))
                 //finish the current activity.
@@ -198,7 +200,7 @@ class LoginFragment : Fragment() {
 
     fun buttonSave() {
        binding.buttonSave.setOnClickListener() {
-           //Toast.makeText(getActivity(), "LAUNCH LOGIN ACTIVITY", Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), "LAUNCH LOGIN ACTIVITY", Toast.LENGTH_LONG).show();
            name = binding.userNameTextField.text.toString()
 
             //Stores the values
